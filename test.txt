@@ -1,0 +1,8 @@
+Hello world!
+This is
+a nice
+test
+text
+file
+for you
+all!
