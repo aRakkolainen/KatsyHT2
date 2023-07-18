@@ -7,6 +7,7 @@ int checkWord(char *, char *);
 int checkWord(char *searchWord, char *tempLine) {
     // How to split the line in C with strcmp: https://www.geeksforgeeks.org/how-to-split-a-string-in-cc-python-and-java/
     // Searching for substring with strstr: https://www.codingame.com/playgrounds/14213/how-to-play-with-strings-in-c/search-within-a-string and linux manual
+    // Comparing two strings: https://www.programiz.com/c-programming/library-function/string.h/strcmp 
     char *token = strtok(tempLine, " ");
         while (token != NULL ){
             if ((strcmp(token, searchWord) == 0) || (strstr(token, searchWord) != NULL)) {
