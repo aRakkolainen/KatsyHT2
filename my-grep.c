@@ -22,6 +22,7 @@ int main(int argc, char * argv[]) {
     char *line;
     size_t len;
     int r=0; 
+    int read=0; 
     int result;
     char *tempLine; 
     if (argc == 1) {
@@ -29,42 +30,23 @@ int main(int argc, char * argv[]) {
         exit(1);
     } 
     else if (argc == 2) {
-        FILE *tempFile; 
-        if ((tempFile = fopen("temp.txt", "w")) == NULL) {
-                fprintf(stderr, "my-grep: cannot open file\n");
-                exit(1);
-        }
-            //Reading the input stream to temporary file
+        printf("Searching the word from stdin\n"); 
         do {
-                    r = getline(&line, &len, stdin); 
-                    if ((r != -1) && (strcmp(line, "\n") != 0)) {
-                        fprintf(tempFile, "%s", line); 
-                    }
+            read = getline(&line, &len, stdin); 
+            if (read == -1) {
+                break; 
+            } 
+            if ((tempLine = (char *)malloc(read*sizeof(char))) == NULL) {
+                            fprintf(stderr, "malloc failed");
+                            exit(1);
+            }
+            strcpy(tempLine, line); 
+            result = checkWord(argv[1], tempLine); 
+            if (result == 1) {
+                printf("Word found in line: %s", line); 
+            }
 
-                } while (r > 1);
-            fclose(tempFile);
-        //Reading the temporary file and searching for the word: 
-        if ((tempFile = fopen("temp.txt", "r")) == NULL) {
-                fprintf(stderr, "my-grep: cannot open file\n");
-                exit(1);
-        } else {
-            do {
-            if ((r = getline(&line, &len, stdin)) != -1) {
-                if ((tempLine = (char *)malloc(r*sizeof(char))) == NULL) {
-                    fprintf(stderr, "malloc failed");
-                    exit(1);
-                }
-                    strcpy(tempLine, line);
-                    printf("%s", line);
-                    result = checkWord(argv[1], tempLine);
-                    if (result == 1) {
-                        printf("%s", line);
-                    }
-                }
-
-            } while (r > 1);
-            fclose(tempFile);
-        }
+        } while (read > 1);
 
         
     } else if (argc > 2) {
