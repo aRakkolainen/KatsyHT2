@@ -4,8 +4,7 @@
 int main(int argc, char * argv[]) {
     FILE *file; 
     int number;
-    char character;
-    //char character;  
+    char character; 
     if (argc == 1) {
         perror("my-unzip: file1 [file2 ...]\n");
         exit(1);

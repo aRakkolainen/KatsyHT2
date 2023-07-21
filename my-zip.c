@@ -8,7 +8,7 @@ struct item {
 // countChar function is based on this website: https://javatutoring.com/c-program-to-count-occurrences-of-character-in-string/
 int countChar(char, char *);
 void readFile(char *);
-void countCharAndWriteToStdout(char *, int); 
+void writeToStdout(char *, int); 
 
 
 int countChar(char character, char *str) {
@@ -34,7 +34,7 @@ void readFile(char *inputFileName) {
                 do {
                     r= getline(&line, &len, file); 
                     if (r != -1) {
-                        countCharAndWriteToStdout(line, r);
+                        writeToStdout(line, r);
                     }
                     }while(r > 1);
                     free(line);
@@ -43,8 +43,9 @@ void readFile(char *inputFileName) {
 
 }
 
-
-void countCharAndWriteToStdout(char *line, int r) { 
+// Here is written the output to the stdout when first the function has called other function countChar 
+// for counting the number of each character in line. 
+void writeToStdout(char *line, int r) { 
     int counter=0; 
     int total=0;
     char character = line[total];
