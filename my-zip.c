@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-struct item {
-    int number;
-    char character;
-}; 
+
 // countChar function is based on this website: https://javatutoring.com/c-program-to-count-occurrences-of-character-in-string/
 int countChar(char, char *);
 void readFile(char *);
