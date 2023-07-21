@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 int main(int argc, char * argv[]) {
     FILE *file; 
     int number;
@@ -12,8 +10,8 @@ int main(int argc, char * argv[]) {
         perror("my-unzip: file1 [file2 ...]\n");
         exit(1);
     } else {
-        //for (int i=1; i < argc; i++) {
-            if ((file = fopen(argv[1], "rb")) == NULL) {
+        for (int i=1; i < argc; i++) {
+            if ((file = fopen(argv[i], "rb")) == NULL) {
                     fprintf(stderr, "my-unzip: cannot open file\n");
                     exit(1);
             }
@@ -24,7 +22,8 @@ int main(int argc, char * argv[]) {
                 }
             }
             fclose(file);
-        //}
+        }
+        printf("\n");
         return(0);
     }
 }
