@@ -1,2 +1,2 @@
-# Katsy23kes-HT2
-Käyttöjärjestelmät ja systeemiohjelmointi harjoitustyö 2
+# Katsy-HT2
+Käyttöjärjestelmät ja systeemiohjelmointi harjoitustyöprojekti 2
